@@ -1,0 +1,26 @@
+# For CentOS/RHEL
+# Import the repository key
+
+sudo rpm --import https://packages.microsoft.com/keys/microsoft.asc
+
+# For RHEL 9 or CentOS Stream, add packages-microsoft-com-prod repository:
+
+sudo dnf install -y https://packages.microsoft.com/config/rhel/9.0/packages-microsoft-prod.rpm
+
+# For RHEL 8, add packages-microsoft-com-prod repository:
+
+sudo dnf install -y https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
+
+# For RHEL 7, add azure-cli repository:
+
+echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | sudo tee /etc/yum.repos.d/azure-cli.repo
+
+# Install with the dnf install command.
+
+sudo dnf install azure-cli
+
