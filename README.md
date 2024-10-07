@@ -32,10 +32,8 @@ az group create --name aks-demo-rg --location eastus
 
 # Create the AKS cluster
 az aks create --resource-group aks-demo-rg --name aks-demo --location eastus2 --node-count 2 --enable-managed-identity --generate-ssh-keys
-# Configure kubectl to connect to the AKS cluster
-az aks get-credentials --resource-group observability-rg --name observability-aks
-
 ```
+
 <img src="https://github.com/user-attachments/assets/ac86358c-104c-48b6-a506-a0d3658833bf"/>
 <img src="https://github.com/user-attachments/assets/2724b032-6e8a-45b1-ad2d-5554ba06f801"/>
 
@@ -51,19 +49,25 @@ az aks get-credentials --resource-group aks-demo-rg --name aks-demo --overwrite-
 ```
 <img src="https://github.com/user-attachments/assets/3c3af067-95d3-458f-a90e-e046da1dcdac"/>
 
+<br/>  Make sure clock is syncronized and confirm <br/>
+
+<img src="https://github.com/user-attachments/assets/ec68a4be-19ad-4a44-8332-229853a4b662"/>
+
 ## 🧰 Step 2: Install Prometheus and Grafana
 
 ```bash
-# Add the Prometheus Helm chart repository
+# Steps to Install Prometheus:
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
-
-# Update your Helm repositories
 helm repo update
+helm install prometheus prometheus-community/prometheus
+kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-ext
 
-# Install the kube-prometheus-stack, which includes both Prometheus and Grafana
-helm install monitoring prometheus-community/kube-prometheus-stack \
--n monitoring \
--f ./custom_kube_prometheus_stack.yml
+# Steps to install Grafana:
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+helm install grafana stable/grafana
+kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-ext
+
 ```
 
 <img src=""/>
