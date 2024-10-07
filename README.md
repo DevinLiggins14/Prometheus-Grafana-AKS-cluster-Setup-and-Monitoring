@@ -133,7 +133,27 @@ kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-passwor
 
 <br/> Note the Grafana username will be always be admin by default and once logged in the password can now be changed <br/>
 <img src="https://github.com/user-attachments/assets/93417c1f-bfe3-4aac-8713-46114fc2c54d"/>
+<img src="https://github.com/user-attachments/assets/abfbba53-de5c-40c7-af5f-668a188faf12"/>
+
+
+### Step 5: Add the Prometheus Database 
+
+<br/> From within Grafana naviagte to connections and select prometheus<br/>
+<img src="https://github.com/user-attachments/assets/2db3008b-9fe8-4dfe-9f84-3ed88176fd29"/>
+
+<br/> Next click add new data source and then enter the prometheus server address <br/>
+<img src="https://github.com/user-attachments/assets/78d78662-1db1-4480-924f-b8a38a22dba0"/>
+<img src="https://github.com/user-attachments/assets/6688d363-c43a-401d-a330-9853f03315a7"/>
+</br> Note: this error stems from the fact that running Grafana and Prometheus together in different container environments, each localhost refers to its own container - if the server URL is localhost:9090, that means port 9090 inside the Grafana container, not port 9090 on the host machine.<br/>
+
+<br/> More info on this can be found at https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/ <br/> 
+
+<img src=""/>
+<img src=""/>
+<img src=""/>
+<img src=""/>
 
 
 
-### Step 5: Add the Prometheus Database  \
+
+
