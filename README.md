@@ -1,6 +1,6 @@
 # Prometheus-Grafana-AKS-cluster-Setup-and-Monitoring
 <h2>Description</h2>
-In this projet we will set up Prometheus and Grafana to monitor and create alerts for an AKS Cluster
+In this project we will set up Prometheus and Grafana to monitor and create alerts for an AKS Cluster
 <br />
 <br/>  Prometheus architecture: <br/>
 <img src="https://github.com/user-attachments/assets/4bf3b677-2866-4a42-ad94-8e7776117baa"/>
