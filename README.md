@@ -148,12 +148,27 @@ kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-passwor
 
 <br/> More info on this can be found at https://grafana.com/docs/grafana/latest/datasources/prometheus/configure-prometheus-data-source/ <br/> 
 
-<img src=""/>
-<img src=""/>
-<img src=""/>
-<img src=""/>
+<br/> The entry for the prometheus server should look like this: <br/>
+<img src="https://github.com/user-attachments/assets/6ddc308f-8f68-4b04-b836-4e27662e901b"/>
+<br/> Result: <br/>
+<img src="https://github.com/user-attachments/assets/cb63ed2f-49e2-4c67-8b90-7db22b358260"/>
 
+### **Step 6 Create a dashboard**
 
+<br/> We can now display the metrics being scraped by Prometheus. To do that we must create a dashboard, for this demo we will import one. Navigate to dashboards and select import <br/>
+<img src="https://github.com/user-attachments/assets/9f8a56a4-3581-4c58-935f-8b06003eba63"/>
 
+</br> Next click on the grafana dashboards link and find the dashboard titled Kubernetes Cluster monitoring via Prometheus  <br/>
 
-
+<img src="https://github.com/user-attachments/assets/54f0e8ce-caad-46ef-96ff-ed6db2c0b844"/>
+<br/> Click copy ID to clipboard and paste it into grafana <br/>
+<img src="https://github.com/user-attachments/assets/48da64ee-6b0e-4bab-aedc-0ad6662395f3"/>
+<br/> Next select the prometheus data source<br/>
+<img src="https://github.com/user-attachments/assets/052f60ef-5f2b-4ab6-8a9d-916665aee942"/>
+<br/> Select import and now the dashboard will be displayed with the prometheus metrics being shown from the AKS cluster <br/>
+<img src="https://github.com/user-attachments/assets/9c891355-1320-4baa-b25c-8fee5a9aae94"/>
+<img src="https://github.com/user-attachments/assets/17a84a3c-1f6e-4633-8176-5c3ebbba1fc9"/>
+<br/> Next click save and navigate to alerting. Next select the prometheus data source and the dashbaord we just created <br/>
+<img src="https://github.com/user-attachments/assets/ad5c4847-00cb-4dd7-8f2c-ef25a5be4d8a"/>
+<br/> Then you can configure alerts and the contact points for where you will be notified <br/>
+<img src="https://github.com/user-attachments/assets/bc5ea2ec-99c2-4207-ae60-5ebdc02e5d91"/>
