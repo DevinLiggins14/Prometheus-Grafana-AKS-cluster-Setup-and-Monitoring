@@ -49,7 +49,7 @@ az aks get-credentials --resource-group aks-demo-rg --name aks-demo --overwrite-
 ```
 <img src="https://github.com/user-attachments/assets/3c3af067-95d3-458f-a90e-e046da1dcdac"/>
 
-<br/>  Make sure clock is syncronized and confirm <br/>
+<br/>  Make sure clock is syncronized if error encountered and confirm <br/>
 
 <img src="https://github.com/user-attachments/assets/ec68a4be-19ad-4a44-8332-229853a4b662"/>
 
