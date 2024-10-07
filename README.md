@@ -19,7 +19,7 @@ Bash, Az-cli, Kubectl, VSCode, Helm (Optional: cloudshell)
 <br/>
 <p align="center">
 
- ## 📦 Step 1: Create AKS Cluster
+ ##  Step 1: Create AKS Cluster
 
 ### **Prerequisites**  
 - Download and Install [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli).  
@@ -107,7 +107,7 @@ This way, http://localhost:9090 will show you the prometheus ui screen because y
 <img src="https://github.com/user-attachments/assets/2acd78cf-95fe-4800-b65c-ad57a0ca374e"/>
 
 
-### ***Now do the same for Grafana**
+### **Now do the same for Grafana**
 
 ```bash
 kubectl port-forward svc/grafana 8080:80
