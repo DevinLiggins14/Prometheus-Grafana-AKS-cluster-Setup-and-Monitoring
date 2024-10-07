@@ -53,7 +53,7 @@ az aks get-credentials --resource-group aks-demo-rg --name aks-demo --overwrite-
 
 <img src="https://github.com/user-attachments/assets/ec68a4be-19ad-4a44-8332-229853a4b662"/>
 
-## 🧰 Step 2: Install Prometheus and Grafana
+##  Step 2: Install Prometheus and Grafana
 
 ```bash
 # Steps to Install Prometheus:
@@ -80,7 +80,7 @@ kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana
 
 
 
-## 🚀 Step 3: Access the Pormetheus and Grafana UI 
+##  Step 3: Access the Pormetheus and Grafana UI 
 
 <br/> If after creating the NodePort service the Prometheus and Grafana UI is inaccessible, this could be due to the fact that Azure security groups or network rules to allow inbound traffic to the NodePort from your IP have not been configured <br/>
 
@@ -110,15 +110,30 @@ This way, http://localhost:9090 will show you the prometheus ui screen because y
 ### ***Now do the same for Grafana**
 
 ```bash
-kubectl port-forward svc/grafana 3000:80
-
+kubectl port-forward svc/grafana 8080:80
 ```
-<img src=""/>
+<img src="https://github.com/user-attachments/assets/3240e699-6099-4c23-9e41-a5d287d88209"/>
+<img src="https://github.com/user-attachments/assets/1ddff298-7918-40fe-80ba-c8320f0b5b38"/>
 
 
-
-## ✅ Step 4: Verify the Installation
+## Step 4: Login to Grafana 
 ```Bash
-kubectl get all -n monitoring
+# To gather the credentials to login to Grafana
+kubectl get secret --namespace default grafana -o yaml
 ```
+<img src="https://github.com/user-attachments/assets/05ca6d30-26e1-4ba6-bf3c-ae975c59a114"/>
+</br> However as you can see the contents of the admin user and password are encrypted  
 
+To decrypt run the following:
+<br/>
+```bash
+# Print the decrypted Grafana password
+kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+````
+
+<br/> Note the Grafana username will be always be admin by default and once logged in the password can now be changed <br/>
+<img src="https://github.com/user-attachments/assets/93417c1f-bfe3-4aac-8713-46114fc2c54d"/>
+
+
+
+### Step 5: Add the Prometheus Database  \
